@@ -405,6 +405,52 @@
       line-height: 1.8;
     }
 
+
+    /* RESUME PREVIEW */
+
+    .resume-preview {
+      margin-top: 45px;
+      text-align: center;
+    }
+
+    .resume-preview h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .resume-preview-card {
+      display: block;
+      max-width: 720px;
+      height: 600px;
+      margin: 0 auto;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      overflow: hidden;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+      cursor: pointer;
+    }
+
+    .resume-preview-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(192, 132, 252, 0.42);
+    }
+
+    .resume-preview-card iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      pointer-events: none;
+    }
+
+    .resume-preview-text {
+      margin-top: 14px;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+    }
+
     /* EDUCATION */
 
     .info-box {
@@ -722,6 +768,12 @@
         font-size: 15px;
       }
     }
+
+    @media (max-width: 700px) {
+      .resume-preview-card {
+        height: 480px;
+      }
+    }
   </style>
 </head>
 
@@ -821,6 +873,26 @@
           <div class="photo-card about-photo">
             <img src="profile.jpeg" alt="Shreshta Anupindi" />
           </div>
+        </div>
+
+        <div class="resume-preview">
+          <h3>Resume</h3>
+
+          <a
+            href="Shreshta_Anupindi_Resume.pdf"
+            target="_blank"
+            class="resume-preview-card"
+            aria-label="Open Shreshta Anupindi Resume"
+          >
+            <iframe
+              src="Shreshta_Anupindi_Resume.pdf#page=1&zoom=page-width&toolbar=0&navpanes=0&scrollbar=0"
+              title="Shreshta Anupindi Resume Preview">
+            </iframe>
+          </a>
+
+          <p class="resume-preview-text">
+            Click the resume to view the full PDF
+          </p>
         </div>
       </div>
     </section>
