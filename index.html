@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Shreshta Anupindi | Aerospace Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #050509;
+      --text: #f4eefc;
+      --muted: #d0c7d9;
+      --soft: #a99abc;
+      --purple: #a855f7;
+      --purple-light: #c084fc;
+      --pink: #e9b8ff;
+      --card: rgba(255, 255, 255, 0.055);
+      --card-hover: rgba(255, 255, 255, 0.085);
+      --border: rgba(192, 132, 252, 0.24);
+      --shadow: 0 20px 70px rgba(0, 0, 0, 0.28);
+      --radius: 24px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+  background: #050509;
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+  overflow-x: hidden;
+}
+    
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* AIRCRAFT + CURVE BACKGROUND */
+
+    .aero-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      opacity: 1;
+    }
+
+    main,
+    nav,
+    footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    .aircraft {
+      position: absolute;
+      filter:
+        drop-shadow(0 0 18px rgba(192, 132, 252, 0.35))
+        drop-shadow(0 0 34px rgba(168, 85, 247, 0.18));
+    }
+
+    .aircraft svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .aircraft path {
+      stroke: rgba(216, 180, 254, 0.65);
+      stroke-width: 3.2;
+      fill: rgba(192, 132, 252, 0.055);
+    }
+
+    .aircraft-1 {
+      width: 680px;
+      height: 365px;
+      right: 2%;
+      top: 15%;
+      transform: rotate(4deg);
+      opacity: 0.18;
+    }
+
+    .aircraft-2 {
+      width: 440px;
+      height: 235px;
+      left: 2%;
+      top: 22%;
+      transform: rotate(-8deg);
+      opacity: 0.16;
+    }
+
+    .aircraft-3 {
+      width: 500px;
+      height: 260px;
+      right: 7%;
+      bottom: 8%;
+      transform: rotate(9deg);
+      opacity: 0.15;
+    }
+
+    .aircraft-4 {
+      width: 390px;
+      height: 205px;
+      left: 7%;
+      bottom: 10%;
+      transform: rotate(7deg);
+      opacity: 0.13;
+    }
+
+    .aircraft-5 {
+      width: 310px;
+      height: 165px;
+      left: 42%;
+      top: 8%;
+      transform: rotate(-4deg);
+      opacity: 0.12;
+    }
+
+    .aero-curve {
+      position: absolute;
+      width: 120%;
+      height: 120px;
+      left: -10%;
+      border-top: 2px solid rgba(216, 180, 254, 0.22);
+      border-radius: 50%;
+      filter: drop-shadow(0 0 16px rgba(192, 132, 252, 0.16));
+      animation: curveFloat 10s ease-in-out infinite alternate;
+    }
+
+    .curve-1 {
+      top: 33%;
+      transform: rotate(-4deg);
+    }
+
+    .curve-2 {
+      top: 48%;
+      transform: rotate(3deg);
+      animation-delay: -3s;
+    }
+
+    .curve-3 {
+      top: 62%;
+      transform: rotate(-2deg);
+      animation-delay: -5s;
+    }
+
+    @keyframes curveFloat {
+      from {
+        opacity: 0.18;
+        margin-left: -18px;
+      }
+
+      to {
+        opacity: 0.34;
+        margin-left: 18px;
+      }
+    }
+
+    /* NAVBAR */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      background: rgba(5, 5, 9, 0.90);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(192, 132, 252, 0.18);
+      padding: 19px 0;
+    }
+
+    .nav-inner {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #ffffff;
+      white-space: nowrap;
+      letter-spacing: 0.4px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 18px;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    /* HOME */
+
+    .home {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding-top: 80px;
+      text-align: center;
+    }
+
+    #networkCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      opacity: 0.38;
+      pointer-events: none;
+    }
+
+    .home-content {
+      position: relative;
+      z-index: 2;
+      width: min(950px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 28px;
+      border-radius: 30px;
+      background: rgba(5, 5, 9, 0.18);
+    }
+
+    .home h1 {
+  font-size: clamp(36px, 5vw, 62px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 30px;
+  white-space: nowrap;
+}
+
+    .home h1 span {
+      color: #ffffff;
+    }
+
+    .home h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 54px;
+    }
+
+    .home h2 span {
+      color: var(--muted);
+    }
+
+    .home p {
+      max-width: 980px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: clamp(19px, 2.1vw, 28px);
+      line-height: 1.55;
+    }
+
+    /* GENERAL SECTIONS */
+
+    section {
+      padding: 105px 0;
+      scroll-margin-top: 90px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .section-title h2 {
+      font-size: clamp(34px, 4vw, 50px);
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .section-title h2 span,
+    .purple {
+      color: #ffffff;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 0.85fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .split-text h3 {
+      font-size: 30px;
+      margin-bottom: 18px;
+      line-height: 1.3;
+    }
+
+    .split-text h3 span {
+      color: #ffffff;
+    }
+
+    .split-text p,
+    .split-text li {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    .split-text ul {
+      margin-left: 20px;
+      margin-top: 14px;
+    }
+
+    .date {
+      color: var(--muted);
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .photo-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: var(--shadow);
+    }
+
+    .photo-card img {
+      height: 340px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .about-photo img {
+      height: 420px;
+      object-position: center 15%;
+    }
+
+    /* ABOUT LANDING SECTION */
+
+    #about {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 130px;
+    }
+
+    #about .section-title {
+      margin-bottom: 62px;
+    }
+
+    #about .section-title h2 {
+      font-size: clamp(48px, 6vw, 72px);
+      letter-spacing: -0.5px;
+    }
+
+    #about .split-text p {
+      font-size: clamp(20px, 2vw, 24px);
+      line-height: 1.8;
+    }
+
+    /* EDUCATION */
+
+    .info-box {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--card);
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .info-box h3 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .info-box p {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.045);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 9px 13px;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* EXPERIENCE */
+
+    .experience-list {
+      display: grid;
+      gap: 58px;
+    }
+
+    .experience-item {
+      display: grid;
+      grid-template-columns: 1fr 0.85fr;
+      gap: 44px;
+      align-items: center;
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(192, 132, 252, 0.14);
+    }
+
+    .experience-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .experience-item img {
+      height: 280px;
+      object-fit: cover;
+      border-radius: 18px;
+    }
+
+    /* PROJECTS */
+
+    .project-list {
+      display: grid;
+      gap: 34px;
+    }
+
+    .project-item {
+      display: grid;
+      grid-template-columns: 1fr 0.8fr;
+      gap: 34px;
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--card);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+    }
+
+    .project-item:hover {
+      transform: translateY(-4px);
+      background: var(--card-hover);
+      border-color: rgba(192, 132, 252, 0.42);
+    }
+
+    .project-text h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .project-text p {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .project-photo img {
+      height: 210px;
+      object-fit: cover;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(192, 132, 252, 0.16);
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--card);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      background: var(--card-hover);
+      border-color: rgba(192, 132, 252, 0.42);
+    }
+
+    .card img {
+      height: 200px;
+      object-fit: cover;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .card-content {
+      padding: 26px;
+    }
+
+    .card h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    /* SKILLS */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .skill-box {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--card);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .skill-box h3 {
+      font-size: 22px;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .skill-box .tag-list {
+      margin-top: 0;
+    }
+
+    /* CONTACT */
+
+    .contact-box {
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background: var(--card);
+      padding: 42px 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .contact-links a {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 12px 18px;
+      min-width: 145px;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 15px;
+      transition: 0.25s ease;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .contact-links a:hover {
+      background: rgba(255, 255, 255, 0.07);
+      transform: translateY(-3px);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--soft);
+      padding: 30px 0;
+      border-top: 1px solid rgba(192, 132, 252, 0.14);
+      font-size: 15px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 950px) {
+      .split,
+      .experience-item {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .photo-card {
+        order: 2;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-item {
+        grid-template-columns: 1fr;
+      }
+
+      .project-photo {
+        order: 2;
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+        gap: 18px;
+      }
+
+      .home {
+        padding-top: 150px;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .aircraft-1 {
+        width: 430px;
+        right: -25%;
+        top: 20%;
+      }
+
+      .aircraft-2,
+      .aircraft-3,
+      .aircraft-4,
+      .aircraft-5 {
+        display: none;
+      }
+
+      .aero-curve {
+        opacity: 0.18;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container,
+      .nav-inner {
+        width: min(100% - 28px, 1100px);
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      .home h1 {
+        font-size: 42px;
+      }
+
+      .home h2 {
+        font-size: 28px;
+      }
+
+      .home p {
+        font-size: 24px;
+      }
+
+      .photo-card img,
+      .about-photo img {
+        height: 320px;
+      }
+
+      .nav-links a {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="networkCanvas"></canvas>
+
+  <div class="aero-bg" aria-hidden="true">
+    <div class="aircraft aircraft-1">
+      <svg viewBox="0 0 800 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M60 230 C190 205 340 190 560 200 L735 210 C765 212 775 228 745 238 L560 250 C340 262 190 255 60 230Z"/>
+        <path d="M420 195 L520 55 C535 65 545 78 552 98 L535 202"/>
+        <path d="M425 255 L535 365 C510 362 490 355 470 340 L365 260"/>
+        <path d="M575 200 L630 110 L655 122 L620 208"/>
+        <path d="M690 210 C735 195 775 205 795 220 C770 238 730 238 690 232"/>
+      </svg>
+    </div>
+
+    <div class="aircraft aircraft-2">
+      <svg viewBox="0 0 800 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M70 230 C210 205 360 192 555 200 L725 210 C755 212 770 226 742 236 L560 250 C350 260 200 255 70 230Z"/>
+        <path d="M410 198 L500 70 C516 82 525 95 530 112 L520 203"/>
+        <path d="M420 252 L525 350 C500 348 478 340 455 325 L360 258"/>
+      </svg>
+    </div>
+
+    <div class="aircraft aircraft-3">
+      <svg viewBox="0 0 800 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M80 230 C220 205 365 190 570 202 L730 212 C760 215 770 226 742 236 L570 248 C360 260 210 255 80 230Z"/>
+        <path d="M420 198 L515 65 C530 78 540 95 545 112 L528 204"/>
+        <path d="M428 252 L535 355 C510 352 488 342 465 328 L370 258"/>
+      </svg>
+    </div>
+
+    <div class="aircraft aircraft-4">
+      <svg viewBox="0 0 800 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M75 232 C215 208 370 194 575 204 L735 214 C765 217 772 228 746 238 L575 250 C365 262 210 257 75 232Z"/>
+        <path d="M430 200 L520 82 C535 94 543 108 548 122 L532 206"/>
+        <path d="M430 250 L530 345 C505 342 485 335 465 322 L370 257"/>
+      </svg>
+    </div>
+
+    <div class="aircraft aircraft-5">
+      <svg viewBox="0 0 800 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M90 230 C225 210 370 198 560 205 L715 214 C745 216 755 228 730 238 L555 250 C360 260 220 254 90 230Z"/>
+        <path d="M420 202 L500 85 C515 96 525 110 528 125 L517 207"/>
+        <path d="M420 250 L520 342 C500 340 480 333 460 322 L370 257"/>
+      </svg>
+    </div>
+
+    <div class="aero-curve curve-1"></div>
+    <div class="aero-curve curve-2"></div>
+    <div class="aero-curve curve-3"></div>
+  </div>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="#about" class="logo">Shreshta Anupindi</a>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>About <span>Me</span></h2>
+        </div>
+
+        <div class="split">
+          <div class="split-text">
+
+            <p>
+              I am pursuing a B.S. in Aerospace Engineering at Iowa State University with
+              minors in Applied AI and Non-Destructive Evaluation. My interests include
+              experimental aerodynamics, UAV systems, flight testing, aircraft design,
+              aerospace materials, and AI-driven engineering tools.
+            </p>
+
+            <br />
+
+            <p>
+              I enjoy hands-on work, technical documentation, research, and design-based
+              projects that help me grow as an aerospace engineer.
+            </p>
+          </div>
+
+          <div class="photo-card about-photo">
+            <img src="profile.jpeg" alt="Shreshta Anupindi" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-title">
+      <h2>Education</h2>
+    </div>
+
+    <div class="split">
+      <div class="split-text">
+        <h3>Iowa State University</h3>
+
+        <p class="date">
+          B.S. Aerospace Engineering • Expected Graduation: May 2027
+        </p>
+
+        <p>
+          <strong>Minors:</strong> Applied AI and Non-Destructive Evaluation.
+        </p>
+
+        <p>
+          <strong>Relevant Coursework:</strong> Aerodynamics, Compressible Flow,
+          Flight Dynamics and Control, Aircraft Performance, Mechanics of Materials,
+          Flight Structures, Astrodynamics, and Computational Techniques for Aerospace Design.
+        </p>
+      </div>
+
+      <div class="photo-card">
+        <img src="iowa_state.png" alt="Iowa State University" />
+      </div>
+    </div>
+  </div>
+</section>
+    <!-- EXPERIENCE -->
+    <section id="experience">
+  <div class="container">
+    <div class="section-title">
+      <h2>Experience</h2>
+    </div>
+
+    <div class="experience-list">
+
+      <div class="experience-item">
+        <div class="split-text">
+          <h3>LAUNCH-SPACE Research Intern</h3>
+          <p class="date">NASA Iowa Space Grant Consortium • May 2026 – Present</p>
+          <ul>
+            <li>Using molecular dynamics simulations to study grafted crosslinked polymer networks under mechanical deformation.</li>
+            <li>Investigating how chain stiffness, interaction strength, grafting, and crosslinking affect tensile behavior and material performance.</li>
+          </ul>
+        </div>
+
+        <div class="photo-card">
+          <img src="launch_space.png" alt="LAUNCH-SPACE research internship" />
+        </div>
+      </div>
+
+      <div class="experience-item">
+        <div class="split-text">
+          <h3>Undergraduate Student Researcher</h3>
+          <p class="date">Iowa State University Department of Aerospace Engineering • Feb 2026 – Present</p>
+          <ul>
+            <li>Developing AI agents for airfoil aerodynamic simulation and design using XFoil.</li>
+            <li>Conducting aerodynamic analysis focused on lift, drag, pressure distribution, and airfoil optimization.</li>
+          </ul>
+        </div>
+
+        <div class="photo-card">
+          <img src="airfoil_research.png" alt="Airfoil aerodynamic research" />
+        </div>
+      </div>
+
+      <div class="experience-item">
+        <div class="split-text">
+          <h3>Undergraduate Research Assistant</h3>
+          <p class="date">Iowa State University Department of Aerospace Engineering • Sep 2024 – Apr 2025</p>
+          <ul>
+            <li>Applied machine learning methods to support polymer crosslinking analysis.</li>
+            <li>Contributed to coarse-grained polymer simulations and material property analysis.</li>
+          </ul>
+        </div>
+
+        <div class="photo-card">
+          <img src="resarch.png" alt="Polymer research work" />
+        </div>
+      </div>
+
+        <div class="experience-item">
+        <div class="split-text">
+          <h3>AVX Technical Assistant</h3>
+          <p class="date">Iowa State University • Jan 2025 – Jun 2026</p>
+          <ul>
+            <li>Maintained, tested, and troubleshot audiovisual systems across university classrooms.</li>
+            <li>Assembled and configured AV equipment racks with cable management and control system integration.</li>
+          </ul>
+        </div>
+
+        <div class="photo-card">
+          <img src="images/avxt.jpg" alt="AVX technical assistant work" />
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-title">
+          <h2>Projects</h2>
+        </div>
+
+        <div class="project-list">
+          <div class="project-item">
+            <div class="project-text">
+              <h3>Wing Morphing Project</h3>
+              <p class="date">SolidWorks • July 2025 – Present</p>
+              <p>
+                Researching morphing wingtip concepts and developing parametric SolidWorks
+                models to study lift improvement, drag reduction, and aerodynamic efficiency trade-offs.
+              </p>
+            </div>
+
+            <div class="project-photo">
+              <!-- Add your wing morphing project image here: images/wing-morphing.jpg -->
+              <img src="wing_morphing.png" alt="Wing morphing project" />
+            </div>
+          </div>
+
+          <div class="project-item">
+            <div class="project-text">
+              <h3>Airfoil Aerodynamic Analysis and Optimization</h3>
+              <p class="date">AerE 3620 • May 2026</p>
+              <p>
+                Analyzed the NACA0012 airfoil using CFD at multiple angles of attack, then
+                optimized the airfoil shape to meet a target lift coefficient while reducing drag by
+                approximately 7.32%.
+              </p>
+            </div>
+
+            <div class="project-photo">
+              <!-- Add a CFD/airfoil image from your AerE 3620 project here: images/airfoil-cfd.jpg -->
+              <img src="base_airfoil_pressure.png" alt="Airfoil aerodynamic analysis and optimization" />
+            </div>
+          </div>
+
+          <div class="project-item">
+            <div class="project-text">
+              <h3>Design Build Fly Competition</h3>
+              <p class="date">August 2023 – April 2024</p>
+              <p>
+                Coordinated operations, manufacturing, and reporting across interdisciplinary
+                subteams, contributing to a 45th-place finish out of 118 international teams.
+              </p>
+            </div>
+
+            <div class="project-photo">
+              <!-- Add your DBF aircraft/team image here: images/dbf.jpg -->
+              <img src="dbffff.jpeg" alt="Design Build Fly aircraft" />
+            </div>
+          </div>
+
+          <div class="project-item">
+            <div class="project-text">
+              <h3>Aerospace Material Defect Detection</h3>
+              <p class="date">September 2024 – November 2024</p>
+              <p>
+                Developed a CNN to automatically detect defects in aerospace composite
+                materials using image data for NDE applications.
+              </p>
+            </div>
+
+            <div class="project-photo">
+              <!-- Add your defect detection result image here: images/defect-detection.jpg -->
+              <img src="defect.png" alt="Aerospace material defect detection" />
+            </div>
+          </div>
+
+          <div class="project-item">
+            <div class="project-text">
+              <h3>Drone Path Optimization</h3>
+              <p>
+                Explored optimized drone movement and technical decision-making for
+                UAV-related applications.
+              </p>
+            </div>
+
+            <div class="project-photo">
+              <!-- Add your drone path image here: images/drone-path.jpg -->
+              <img src="drone_path.png" alt="Drone path optimization" />
+            </div>
+          </div>
+
+          <div class="project-item">
+            <div class="project-text">
+              <h3>CAD Design</h3>
+              <p>
+                Modeled a simplified fixed landing gear concept inspired by aircraft geometry,
+                focusing on layout, structure, and aerospace visualization.
+              </p>
+            </div>
+
+            <div class="project-photo">
+              <!-- Add your CAD design image here: images/landing-gear.jpg -->
+              <img src="cad_design.png" alt="CAD design project" />
+            </div>
+          </div>
+
+          <div class="project-item">
+            <div class="project-text">
+              <h3>Engineering Project Simulator</h3>
+              <p>
+                Created an AI chatbot concept to help engineering students discover practical,
+                resume-building technical projects.
+              </p>
+            </div>
+
+            <div class="project-photo">
+              <!-- Add your engineering project simulator image here: images/project-simulator.jpg -->
+              <img src="engineering_simulator.png" alt="Engineering project simulator" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-title">
+          <h2>Skills</h2>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-box">
+            <h3>Aerospace</h3>
+            <div class="tag-list">
+              <span class="tag">Aerodynamics</span>
+              <span class="tag">Flight Testing</span>
+              <span class="tag">UAV Systems</span>
+              <span class="tag">Aircraft Performance</span>
+              <span class="tag">Flight Structures</span>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <h3>Programming</h3>
+            <div class="tag-list">
+              <span class="tag">Python</span>
+              <span class="tag">MATLAB</span>
+              <span class="tag">Simulink</span>
+              <span class="tag">VS Code</span>
+              <span class="tag">Excel</span>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <h3>Design Tools</h3>
+            <div class="tag-list">
+              <span class="tag">SolidWorks</span>
+              <span class="tag">AutoCAD</span>
+              <span class="tag">Fusion 360</span>
+              <span class="tag">Onshape</span>
+              <span class="tag">KeyShot</span>
+              <span class="tag">XFLR5</span>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <h3>Technical Areas</h3>
+            <div class="tag-list">
+              <span class="tag">Machine Learning</span>
+              <span class="tag">Sensors</span>
+              <span class="tag">Wiring</span>
+              <span class="tag">NDE</span>
+              <span class="tag">Technical Writing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Resume & <span>Contact</span></h2>
+        </div>
+
+        <div class="contact-box">
+          <p>
+            Interested in working together? View my resume for a complete overview of my
+            experience, skills, and qualifications.
+          </p>
+
+          <div class="contact-links">
+            <a href="mailto:sanupind@iastate.edu">Email</a>
+            <a href="Shreshta_Anupindi_Resume.pdf" target="_blank">View Resume</a>
+            <a href="https://www.linkedin.com/in/shreshta-anu/?skipRedirect=true" target="_blank">LinkedIn</a>
+            <a href="https://github.com/ShreshtaAnupindi" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Shreshta Anupindi. All rights reserved.
+  </footer>
+
+  <script>
+    const canvas = document.getElementById("networkCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      createParticles();
+    }
+
+    function createParticles() {
+      particles = [];
+      const count = Math.floor((canvas.width * canvas.height) / 10500);
+
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * 0.42,
+          vy: (Math.random() - 0.5) * 0.42,
+          radius: Math.random() * 2.3 + 1.2
+        });
+      }
+    }
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(235, 235, 242, 0.65)";
+        ctx.fill();
+      }
+
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 165) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(210, 210, 220, ${0.22 * (1 - distance / 165)})`;
+            ctx.lineWidth = 1.2;
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(drawParticles);
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+
+    resizeCanvas();
+    drawParticles();
+  </script>
+</body>
+</html>
